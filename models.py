@@ -25,15 +25,16 @@ class partnerinfo_comparison(models.Model):
 	@api.model
 	def _update_price_comparison(self):
 		self.search([]).unlink()
-		import pdb;pdb.set_trace()
-		partnerinfo_ids = self.env['pricelist.partnerinfo'].search([],order='product_tmpl_id, name, min_quantity')
+		partnerinfo_ids = self.env['pricelist.partnerinfo'].search([],order='suppinfo_id asc, min_quantity asc')
 		min_value = 0
 		for partnerinfo in partnerinfo_ids:
 			# Creates records here
-			for index in range(partnerinfo.min_quantity,partnerinfo.breakpoint+1):
+			min_qty = int(partnerinfo.min_quantity)
+			max_qty = int(partnerinfo.breakpoint + 1)
+			for index in range(min_qty,max_qty):
 				vals = {
-					'product_tmpl_id': partnerinfo.suppinfo_id.product_tmpl_id,
-					'supplier_id': partnerinfo.suppinfo_id.name,
+					'product_tmpl_id': partnerinfo.suppinfo_id.product_tmpl_id.id,
+					'supplier_id': partnerinfo.suppinfo_id.name.id,
 					'qty': index,
 					'price': partnerinfo.price
 					#'pricelist_id': 
