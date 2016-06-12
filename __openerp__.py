@@ -4,6 +4,7 @@
     'version': '0.1',
     'depends': ['sale','product'],
     'data': [
+	'sale_view.xml'
     ],
     'demo': [
     ],
