@@ -31,7 +31,7 @@ class partnerinfo_comparison(models.Model):
 
 	@api.model
 	def _update_price_comparison(self):
-		pricelists = self.env['product.pricelist'].search(['allow_price_comparison','=',True)
+		pricelists = self.env['product.pricelist'].search([('allow_price_comparison','=',True)])
 		if not pricelists:
 			return None
 		self.search([]).unlink()
