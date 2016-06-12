@@ -2,6 +2,23 @@
 <openerp>
     <data>
 
+        <record id="view_price_comparison_tree" model="ir.ui.view">
+            <field name="name">partnerinfo.comparison.tree</field>
+            <field name="model">partnerinfo.comparison</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+		<tree string="Price Comparison">
+                    <field name="product_tmpl_id"/>
+                    <field name="supplier_id"/>
+                    <field name="currency_id"/>
+                    <field name="pricelist_id"/>
+                    <field name="qty"/>
+                    <field name="price" />
+                </tree>
+            </field>
+        </record>
+
+
         <record id="view_price_comparison_filter" model="ir.ui.view">
             <field name="name">partnerinfo.comparison.select</field>
             <field name="model">partnerinfo.comparison</field>
@@ -20,6 +37,7 @@
             <field name="res_model">partnerinfo.comparison</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+	    <field name="view_id">view_price_comparison_tree</field>
 	    <field name="search_id">view_price_comparison_filter</field>
         </record>
 
