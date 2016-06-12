@@ -57,7 +57,7 @@ class partnerinfo_comparison(models.Model):
 					}
 				self.create(vals)
 				for pricelist in pricelists:
-                                        return_pricelist = pricelist.price_get(product, index or 1.0, False,\
+                                        return_pricelist = pricelist.price_get(product.id, index or 1.0, False,\
                                                  context = {'uom': 1, 'date': str(date.today())})
                                         calculated_price = return_pricelist[pricelist.id]
 					vals = {
