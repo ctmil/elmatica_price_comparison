@@ -64,7 +64,7 @@ class partnerinfo_comparison(models.Model):
 						'name': pricelist.name,
 						'product_tmpl_id': partnerinfo.suppinfo_id.product_tmpl_id.id,
 						'supplier_id': partnerinfo.suppinfo_id.name.id,
-						'pricelist_id': partnerinfo.suppinfo_id.pricelist_id.id,
+						'pricelist_id': pricelist.id,
 						'qty': index,
 						'price': calculated_price
 						}
