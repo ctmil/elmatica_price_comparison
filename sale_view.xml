@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.actions.act_window" id="price_comparison_action">
+            <field name="name">Price Comparison</field>
+            <field name="res_model">partnerinfo.comparison</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitep id="price_comparison_menu" name="Price Comparison"
+                  parent="base.menu_product"
+                  sequence="200"
+                  action="price_comparison_action"/>
+    </data>
+</openerp>
