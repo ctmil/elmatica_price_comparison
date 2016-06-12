@@ -34,6 +34,9 @@ class partnerinfo_comparison(models.Model):
 		pricelists = self.env['product.pricelist'].search([('allow_price_comparison','=',True)])
 		if not pricelists:
 			return None
+		currency_rates = {}
+		for pricelist in pricelists:
+			currency_rates[pricelist.currency_id.id] = pricelist.currency_id.silent_rate
 		self.search([]).unlink()
 		partnerinfo_ids = self.env['pricelist.partnerinfo'].search([],order='suppinfo_id asc, min_quantity asc')
 		min_value = 0
@@ -59,7 +62,7 @@ class partnerinfo_comparison(models.Model):
 				for pricelist in pricelists:
                                         return_pricelist = pricelist.price_get(product.id, index or 1.0, False,\
                                                  context = {'uom': 1, 'date': str(date.today())})
-                                        calculated_price = return_pricelist[pricelist.id]
+                                        calculated_price = return_pricelist[pricelist.id] * currency_rates[pricelist.currency_id.id]
 					vals = {
 						'name': pricelist.name,
 						'product_tmpl_id': partnerinfo.suppinfo_id.product_tmpl_id.id,
