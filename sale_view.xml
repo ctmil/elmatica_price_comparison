@@ -37,8 +37,8 @@
             <field name="res_model">partnerinfo.comparison</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-	    <field name="view_id">view_price_comparison_tree</field>
-	    <field name="search_id">view_price_comparison_filter</field>
+	    <field name="view_id" ref="view_price_comparison_tree" />
+	    <field name="search_view_id" ref="view_price_comparison_filter" />
         </record>
 
         <menuitem id="price_comparison_menu" name="Price Comparison"
