@@ -11,6 +11,11 @@ from openerp.fields import Date as newdate
 #Get the logger
 _logger = logging.getLogger(__name__)
 
+class product_pricelist(models.Model):
+	_inherit = 'product.pricelist'
+
+	allow_price_comparison = fields.Boolean('Allow Price Comparison')
+
 
 class partnerinfo_comparison(models.Model):
 	_name = 'partnerinfo.comparison'

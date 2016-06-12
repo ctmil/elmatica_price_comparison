@@ -2,6 +2,18 @@
 <openerp>
     <data>
 
+        <record model="ir.ui.view" id="product_pricelist_price_comparison_form">
+            <field name="name">product.pricelist.price_comparison.form</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view"/>
+            <field name="arch" type="xml">
+                <field name="currency_id" position="after">
+                       <field name="allow_price_comparison" />
+                </field>
+            </field>
+        </record>
+
+
         <record id="view_price_comparison_tree" model="ir.ui.view">
             <field name="name">partnerinfo.comparison.tree</field>
             <field name="model">partnerinfo.comparison</field>
