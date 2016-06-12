@@ -36,7 +36,7 @@ class partnerinfo_comparison(models.Model):
 			return None
 		currency_rates = {}
 		for pricelist in pricelists:
-			currency_rates[pricelist.currency_id.id] = pricelist.currency_id.silent_rate
+			currency_rates[pricelist.currency_id.id] = pricelist.currency_id.rate_silent
 		self.search([]).unlink()
 		partnerinfo_ids = self.env['pricelist.partnerinfo'].search([],order='suppinfo_id asc, min_quantity asc')
 		min_value = 0
